@@ -1,0 +1,28 @@
+# Godot App Release & Deployment Checklist
+
+Use this step-by-step checklist every time you push a new version of your application to production.
+
+## Step 1: Code & Version Bump
+- [ ] Open `main.gd` in your Godot project.
+- [ ] Update the `CURRENT_APP_VERSION` constant to your new version number (e.g., change `"1.0.0"` to `"1.1.0"`).
+- [ ] Thoroughly test the login, local saving, and cloud sync features in the editor or debug build.
+
+## Step 2: Export Android APK
+- [ ] Open **Project -> Export** in Godot.
+- [ ] Select your Android export preset.
+- [ ] Click **Export Project** to compile your new release `.apk` binary.
+
+## Step 3: Publish GitHub Release
+- [ ] Go to your public GitHub repository (`Fin-v3xfMG1AlMEzm6qkoXMhWuEUg1ofl2uS`).
+- [ ] Click on **Releases** -> **Create a new release**.
+- [ ] Set the **Tag version** to match your new version (e.g., `v1.1`).
+- [ ] Attach/Upload your compiled `budget_app.apk` file into the binaries section.
+- [ ] Ensure the release is set to **Publish** (not draft) and click **Publish release**.
+
+## Step 4: Update Firebase Realtime Database
+- [ ] Open the Firebase Console and navigate to your **Realtime Database**.
+- [ ] Locate your app config node (`vault_9x8B2mPq7K4vL/app_config`).
+- [ ] Update `latest_version` to your new version string.
+- [ ] Update `apk_url` to point directly to your new GitHub release asset URL:
+  ```text
+  [https://github.com/Radrarg/Fin-v3xfMG1AlMEzm6qkoXMhWuEUg1ofl2uS/releases/download/v1.1/budget_app.apk](https://github.com/Radrarg/Fin-v3xfMG1AlMEzm6qkoXMhWuEUg1ofl2uS/releases/download/v1.1/budget_app.apk)
